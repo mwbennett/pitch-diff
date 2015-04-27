@@ -1,9 +1,10 @@
-(function () {
+$(document).ready(function () {
+
   
   // HELPERS 
   var generateRandomNote = function() {
-    var key = Math.floor(Math.random() * 88);
-    return teoria.note.fromKey(key);
+    var key = Math.floor(Math.random() * 76);
+    return teoria.note.fromKey(key + 6);
   };
 
   var generateInterval = function() {
@@ -15,10 +16,16 @@
     if ( Math.abs(note1.key() - note2.key()) > 12 ) {
       var randomSign = Math.random() >= .5 ? 1 : -1;
       var newKey = (note2.key() % 12 + note1.key()) * randomSign;
+
+      // ensure note stays within limits 
+      if (newKey > 82 || newKey < 7){
+        newKey = (note2.key() % 12 + note1.key()) * -randomSign;
+      }
+
       note2 = teoria.note.fromKey(newKey);
     }
 
-    return [ ];
+    return [note1, note2];
   };
 
   var playFreq = function(freq) {
@@ -29,25 +36,31 @@
   };
   
   var playInterval = function(intervalArr) {
-    playFreq(intervalArr[0]);
+    playFreq(intervalArr[0].fq());
     setTimeout(function() {
-      playFreq(intervalArr[1]);
+      playFreq(intervalArr[1].fq());
     }, 600);
   };
 
-  var freqToNote = function(freq) {
-    
-  };
+  // APP
 
-  var noteToFreq = function(freq) {
-    return 
-  };
+  var currentInterval = null;
 
-  var parseInterval = function(interval) {
+  // click handlers 
+  $('.interval-menu').on('click', '.interval-button', function(e) {
+    e.preventDefault();
+    console.log($(this).text());
+  });
 
-  };
+  $('.playing-options').on('click', '.new-interval', function(e) {
+    e.preventDefault();
+    currentInterval = generateInterval;
+    playInterval(currentInterval);
+  });
 
-  // APP 
-  playInterval([830.609, 830.609]);
+  $('.playing-options').on('click', '.play-again', function(e) {
+    e.preventDefault();
+    playInterval(currentInterval);
+  });
 
-}());
+});

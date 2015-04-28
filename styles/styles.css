@@ -51,15 +51,41 @@ table {
 }
 
 /*APP STYLES */
-
-/*INTERVAL BUTTONS*/
-.correct {
-  background: green;
-} 
-
-.incorrect {
-  background: red;
+body {
+  padding: 25px;
+  font-family: Gill Sans Extrabold, sans-serif;
+}
+h1 {
+  font-size: 28px;
+}
+button:focus {
+  outline: 0 !important;
+}
+/*CANVAS*/
+.canvas-container {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
+/*INTERVAL BUTTONS*/
+.btn {
+  width: 50px;
+  margin: 10px 0;
+}
+.button-empty {
+  visibility: hidden;
+}
+.interval-menu {
+  text-align: center;
+}
+
+/*PLAYER BUTTONS */
+.btn-player {
+  width: 200px;
+  margin: 15px;
+}
+.playing-options {
+  text-align: center;
+}
 
 

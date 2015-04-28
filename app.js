@@ -12,18 +12,16 @@ $(document).ready(function () {
   var generateInterval = function() {
     // generate two random notes 
     var note1 = generateRandomNote();
+    while (note1.octave() > 5 || note1.octave() < 3){
+      note1 = generateRandomNote();
+    }
     var note2 = generateRandomNote();
 
     // make sure the interval is no greater than an octave apart 
     if ( Math.abs(note1.key() - note2.key()) > 12 ) {
-      var randomSign = Math.random() >= .5 ? 1 : -1;
+      var sign = note1.octave() >= 4 ? -1 : 1;
 
-      var newKey = (note2.key() % 12 * randomSign) + note1.key();
-
-      // ensure note stays within limits 
-      if (newKey > 73 || newKey < 15){
-        newKey = (note2.key() % 12 * -randomSign) + note1.key();
-      }
+      var newKey = (note2.key() % 12 * sign) + note1.key();
 
       note2 = teoria.note.fromKey(newKey);
     }
@@ -57,41 +55,62 @@ $(document).ready(function () {
     return intName === parseIntervalString(currentInterval[0].toString()) ? true : false;
   };
 
-  var renderInterval = function(interval) {
-    var canvas = $("canvas")[0];
-    var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
-    var ctx = renderer.getContext();
-    var stave = new Vex.Flow.Stave(10, 0, 200);
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+  var setNoteClef = function(interval) {
     var note1 = interval[1];
     var note2 = interval[2];
 
-    var noteClef = note1.octave() > 3 || note2.octave() > 3 ? 'treble' : 'bass';
+    return note1.octave() > 3 || note2.octave() > 3 ? 'treble' : 'bass';
+  }
 
-    var arr = [note1.toString(), note2.toString()];
+  var createStaveNotes = function(interval, noteClef) {
+    var note1 = interval[1];
+    var note2 = interval[2];
+
+    // Create note keys 
+    var noteStrings = [note1.toString(), note2.toString()];
     var noteKeys = [];
 
-    arr.forEach(function(elem){
+    noteStrings.forEach(function(elem){
       var len = elem.length;
       elem = elem.slice(0, len - 1) + '/' + elem.slice(len - 1);
       noteKeys.push(elem);
     });
 
-    console.log(noteKeys);
-
-    stave.addClef(noteClef).setContext(ctx).draw();
-
-    // Create the notes
+    // store accidentals for note rendering
     var accidentals = [];
+    noteStrings.forEach(function(str, index) {
+      if (str[1] === '#' || str[1] === 'b') {
+        accidentals[index] = (str[1]);
+      }
+    })
 
-    // TODO - handle accidentals! 
-    var notes = [
-      new Vex.Flow.StaveNote({ clef: noteClef, keys: noteKeys, duration: "w" })
-        // addAccidental(1, new Vex.Flow.Accidental("b")).
-        // addAccidental(2, new Vex.Flow.Accidental("#"))
-    ];
+    var staveNote1, staveNote2; 
+    // create first staveNote in interval
+    if (accidentals[0] !== undefined) {
+      staveNote1 = new Vex.Flow.StaveNote({ clef: noteClef, keys: [noteKeys[0]], duration: "h" })
+        .addAccidental(0, new Vex.Flow.Accidental(accidentals[0]));
+    } else {
+      staveNote1 = new Vex.Flow.StaveNote({ clef: noteClef, keys: [noteKeys[0]], duration: "h" });
+    } 
+    // create second staveNote in interval 
+    if (accidentals[1] !== undefined) {
+      staveNote2 = new Vex.Flow.StaveNote({ clef: noteClef, keys: [noteKeys[1]], duration: "h" })
+        .addAccidental(0, new Vex.Flow.Accidental(accidentals[1]));
+    } else {
+      staveNote2 = new Vex.Flow.StaveNote({ clef: noteClef, keys: [noteKeys[1]], duration: "h" });
+    }
+    return [staveNote1, staveNote2];
+  }
+
+  var renderInterval = function(staveNotes, intervalClef) {
+    var canvas = $("canvas")[0];
+    var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
+    var ctx = renderer.getContext();
+    var stave = new Vex.Flow.Stave(120, 10, 200);
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    stave.addClef(intervalClef).setContext(ctx).draw();
 
     // Create a voice in 4/4
     var voice = new Vex.Flow.Voice({
@@ -101,16 +120,22 @@ $(document).ready(function () {
     });
 
     // Add notes to voice
-    voice.addTickables(notes);
+    voice.addTickables(staveNotes);
 
     // Format and justify the notes to 500 pixels
     var formatter = new Vex.Flow.Formatter().
-      joinVoices([voice]).format([voice], 500);
+      joinVoices([voice]).format([voice], 200);
 
     // Render voice
     voice.draw(ctx, stave);
           
   };
+
+  var renderNewStaff = function(interval) {
+    var noteClef = setNoteClef(interval);
+    var staveNotes = createStaveNotes(interval, noteClef);
+    renderInterval(staveNotes, noteClef);
+  }
 
   var setNewInterval = function() {
     currentInterval = generateInterval();
@@ -118,7 +143,7 @@ $(document).ready(function () {
     if (intervalString.length > 2) {
       setNewInterval();
     }
-    renderInterval(currentInterval);
+    renderNewStaff(currentInterval);
   }
 
   setNewInterval();

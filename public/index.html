@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+ <html class="no-js"> 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DiffPitch</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="lib/vexflow/releases/vexflow-min.js"></script>
+    <script src="lib/raphael/raphael.js"></script>
+    <script src="lib/teoria/dist/teoria.js"></script>
+    <script src="lib/timbre/timbre.js"></script>
+    <!-- <script src="notes.js"></script> --> 
+    <script src="scripts.js"></script>
+  </head>
+  
+  <body>
+    <div class='scoreboard'>
+      <h2 class='scoreboard-title'>Scoreboard</h2>
+      <div>Responses: <span class=' score-value total-score'>0/0</span></div>
+      <div>Current streak: <span class=' score-value current-streak'>0</span></div>
+      <div>Longest streak: <span class='score-value longest-streak'>0</span></div>
+      <div><button class='btn btn-xs btn-info clear-score'>Clear score</button></div>
+    </div>
+    
+    <div class='container main-content'>
+      <h1>DiffPitch</h1>
+
+      <div class='canvas-container'>
+        <canvas width=400 height=150></canvas>
+      </div>
+
+      <div class='interval-menu'>
+
+        <div class='diminished-buttons'>
+          <button class='btn btn-sm interval-button'>d1</button>
+          <button class='btn btn-sm interval-button'>d2</button>
+          <button class='btn btn-sm interval-button'>d3</button>
+          <button class='btn btn-sm interval-button'>d4</button>
+          <button class='btn btn-sm interval-button'>d5</button>
+          <button class='btn btn-sm interval-button'>d6</button>
+          <button class='btn btn-sm interval-button'>d7</button>
+          <button class='btn btn-sm interval-button'>d8</button><br>
+        </div>
+
+        <div class='minor-buttons'>
+          <button class='btn btn-sm button-empty'></button>
+          <button class='btn btn-sm interval-button'>m2</button>
+          <button class='btn btn-sm interval-button'>m3</button>
+          <button class='btn btn-sm button-empty'></button>
+          <button class='btn btn-sm button-empty'></button>
+          <button class='btn btn-sm interval-button'>m6</button>
+          <button class='btn btn-sm interval-button'>m7</button>
+          <button class='btn btn-sm button-empty'></button><br>
+        </div>
+        
+        <div class='major-buttons'>
+          <button class='btn btn-sm interval-button'>P1</button>
+          <button class='btn btn-sm interval-button'>M2</button>
+          <button class='btn btn-sm interval-button'>M3</button>
+          <button class='btn btn-sm interval-button'>P4</button>
+          <button class='btn btn-sm interval-button'>P5</button>
+          <button class='btn btn-sm interval-button'>M6</button>
+          <button class='btn btn-sm interval-button'>M7</button>
+          <button class='btn btn-sm interval-button'>P8</button><br>
+        </div>
+
+        <div>
+          <button class='btn btn-sm button-empty'></button>
+          <button class='btn btn-sm interval-button'>A2</button>
+          <button class='btn btn-sm interval-button'>A3</button>
+          <button class='btn btn-sm interval-button'>A4</button>
+          <button class='btn btn-sm interval-button'>A5</button>
+          <button class='btn btn-sm interval-button'>A6</button>
+          <button class='btn btn-sm interval-button'>A7</button>
+          <button class='btn btn-sm interval-button'>A8</button><br>
+        </div>
+
+      </div> <!-- interval menu -->
+
+      <div class='playing-options'>
+        <button class='btn btn-player play-again'>Play</button>
+        <button class='btn btn-player new-interval'>New interval</button>
+      </div><!--  playing options  -->
+    </div><!--  container -->
+  </body>
+
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "2015-03-solo",
+  "version": "1.0.0",
+  "description": "## Interval Training for Musicians and Composers ##",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mwbennett/2015-03-solo.git"
+  },
+  "author": "Mark Bennett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mwbennett/2015-03-solo/issues"
+  },
+  "homepage": "https://github.com/mwbennett/2015-03-solo",
+  "dependencies": {
+    "express": "^4.12.3"
+  }
+}

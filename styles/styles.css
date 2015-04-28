@@ -65,15 +65,21 @@ h1, h2 {
 
 h1 {
   font-size: 28px;
+  padding-top: 20px;
 }
 
 button:focus {
   outline: 0 !important;
 }
 
+.main-content {
+  position: relative;
+  top: -20px;
+}
 /*CANVAS*/
 .canvas-container {
   text-align: center;
+  clear: both;
 }
 
 canvas {
@@ -89,6 +95,7 @@ canvas {
 .scoreboard {
   width: 200px;
   float: right;
+  margin-right: 20px;
 }
 
 .score-value {

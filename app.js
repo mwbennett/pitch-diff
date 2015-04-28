@@ -63,8 +63,11 @@ $(document).ready(function () {
     var stave = new Vex.Flow.Stave(10, 0, 200);
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     var note1 = interval[1];
     var note2 = interval[2];
+
+    var noteClef = note1.octave() > 3 || note2.octave() > 3 ? 'treble' : 'bass';
 
     var arr = [note1.toString(), note2.toString()];
     var noteKeys = [];
@@ -77,11 +80,11 @@ $(document).ready(function () {
 
     console.log(noteKeys);
 
-    stave.addClef("bass").setContext(ctx).draw();
+    stave.addClef(noteClef).setContext(ctx).draw();
 
     // Create the notes
     var notes = [
-      new Vex.Flow.StaveNote({ keys: noteKeys, duration: "w" })
+      new Vex.Flow.StaveNote({ clef: noteClef, keys: noteKeys, duration: "w" })
         // addAccidental(1, new Vex.Flow.Accidental("b")).
         // addAccidental(2, new Vex.Flow.Accidental("#"))
     ];

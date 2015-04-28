@@ -54,17 +54,26 @@ table {
 body {
   padding: 25px;
   font-family: Gill Sans Extrabold, sans-serif;
+  font-size: 14px;
 }
+
+h1, h2 {
+  color: #FF8533;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
 h1 {
   font-size: 28px;
 }
+
 button:focus {
   outline: 0 !important;
 }
+
 /*CANVAS*/
 .canvas-container {
   text-align: center;
-  margin-bottom: 10px;
 }
 
 canvas {
@@ -76,14 +85,33 @@ canvas {
   width: 500px;
 }
 
+/*SCOREBOARD*/
+.scoreboard {
+  width: 200px;
+  float: right;
+}
+
+.score-value {
+  float: right;
+}
+
+.clear-score.btn-xs {
+  width: 200px;
+}
+
+.scoreboard-title {
+  text-align: center;
+}
 /*INTERVAL BUTTONS*/
 .btn {
   width: 50px;
-  margin: 10px 0;
+  margin: 5px 0;
 }
+
 .button-empty {
   visibility: hidden;
 }
+
 .interval-menu {
   text-align: center;
 }
@@ -93,6 +121,12 @@ canvas {
   width: 200px;
   margin: 15px;
 }
+
+.btn-info {
+  background: #FF8533;
+  border-color: #FF8533;
+}
+
 .playing-options {
   text-align: center;
 }

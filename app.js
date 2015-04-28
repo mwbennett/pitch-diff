@@ -146,7 +146,11 @@ $(document).ready(function () {
     renderNewStaff(currentInterval);
   }
 
-  setNewInterval();
+  var checkLongestStreak = function() {
+    if (currentStreak > longestStreak) {
+      longestStreak = currentStreak;
+    }
+  }
 
 //===============================//
 // CLICK HANDLERS                //
@@ -155,13 +159,22 @@ $(document).ready(function () {
   $('.interval-menu').on('click', '.interval-button', function(e) {
     e.preventDefault();
     console.log("Check response: ", checkResponse($(this).text()));
+
     if (checkResponse($(this).text())) {
       $(this).addClass('btn-success');
+      $('.total-score').text(++correctResponses + '/' + ++totalResponses);
+      $('.current-streak').text(++currentStreak);
+      checkLongestStreak();
+      $('.longest-streak').text(longestStreak);
       $('.new-interval').addClass('btn-info');
       $('.new-interval').text('Play next');
     } else {
       $(this).addClass('btn-danger');
+      $('.total-score').text(correctResponses + '/' + ++totalResponses);
+      currentStreak = 0;
+      $('.current-streak').text(currentStreak);
     }
+
   });
 
   $('.playing-options').on('click', '.new-interval', function(e) {
@@ -180,5 +193,24 @@ $(document).ready(function () {
     $(this).text('Play again');
     playInterval(currentInterval);
   });
+
+  $('.scoreboard').on('click', '.clear-score', function(e) {
+    e.preventDefault();
+    correctResponses = totalResponses = longestStreak = currentStreak = 0;
+    $('.total-score').text(correctResponses + '/' + totalResponses);
+    $('.current-streak').text(currentStreak);
+    checkLongestStreak();
+    $('.longest-streak').text(longestStreak);
+  });
+
+//===============================//
+// INITIATE APP                  //
+//===============================// 
+  
+  var correctResponses = 0;
+  var totalResponses = 0;
+  var longestStreak = 0;
+  var currentStreak = 0;
+  setNewInterval();
 
 });

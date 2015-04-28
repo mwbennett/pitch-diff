@@ -24,9 +24,17 @@
   </head>
   
   <body>
+    <div class='scoreboard'>
+      <h2 class='scoreboard-title'>Scoreboard</h2>
+      <div>Responses: <span class=' score-value total-score'>0/0</span></div>
+      <div>Current streak: <span class=' score-value current-streak'>0</span></div>
+      <div>Longest streak: <span class='score-value longest-streak'>0</span></div>
+      <div><button class='btn btn-xs btn-info clear-score'>Clear score</button></div>
+    </div>
+    
     <div class='container '>
       <h1>DiffPitch</h1>
-      
+
       <div class='canvas-container'>
         <canvas width=400 height=150></canvas>
       </div>
@@ -34,47 +42,47 @@
       <div class='interval-menu'>
 
         <div class='diminished-buttons'>
-          <button class='btn button-empty'></button>
-          <button class='btn interval-button'>d2</button>
-          <button class='btn interval-button'>d3</button>
-          <button class='btn interval-button'>d4</button>
-          <button class='btn interval-button'>d5</button>
-          <button class='btn interval-button'>d6</button>
-          <button class='btn interval-button'>d7</button>
-          <button class='btn interval-button'>d8</button><br>
+          <button class='btn btn-sm button-empty'></button>
+          <button class='btn btn-sm interval-button'>d2</button>
+          <button class='btn btn-sm interval-button'>d3</button>
+          <button class='btn btn-sm interval-button'>d4</button>
+          <button class='btn btn-sm interval-button'>d5</button>
+          <button class='btn btn-sm interval-button'>d6</button>
+          <button class='btn btn-sm interval-button'>d7</button>
+          <button class='btn btn-sm interval-button'>d8</button><br>
         </div>
 
         <div class='minor-buttons'>
-          <button class='btn button-empty'></button>
-          <button class='btn interval-button'>m2</button>
-          <button class='btn interval-button'>m3</button>
-          <button class='btn button-empty'></button>
-          <button class='btn button-empty'></button>
-          <button class='btn interval-button'>m6</button>
-          <button class='btn interval-button'>m7</button>
-          <button class='btn button-empty'></button><br>
+          <button class='btn btn-sm button-empty'></button>
+          <button class='btn btn-sm interval-button'>m2</button>
+          <button class='btn btn-sm interval-button'>m3</button>
+          <button class='btn btn-sm button-empty'></button>
+          <button class='btn btn-sm button-empty'></button>
+          <button class='btn btn-sm interval-button'>m6</button>
+          <button class='btn btn-sm interval-button'>m7</button>
+          <button class='btn btn-sm button-empty'></button><br>
         </div>
         
         <div class='major-buttons'>
-          <button class='btn interval-button'>P1</button>
-          <button class='btn interval-button'>M2</button>
-          <button class='btn interval-button'>M3</button>
-          <button class='btn interval-button'>P4</button>
-          <button class='btn interval-button'>P5</button>
-          <button class='btn interval-button'>M6</button>
-          <button class='btn interval-button'>M7</button>
-          <button class='btn interval-button'>P8</button><br>
+          <button class='btn btn-sm interval-button'>P1</button>
+          <button class='btn btn-sm interval-button'>M2</button>
+          <button class='btn btn-sm interval-button'>M3</button>
+          <button class='btn btn-sm interval-button'>P4</button>
+          <button class='btn btn-sm interval-button'>P5</button>
+          <button class='btn btn-sm interval-button'>M6</button>
+          <button class='btn btn-sm interval-button'>M7</button>
+          <button class='btn btn-sm interval-button'>P8</button><br>
         </div>
 
         <div>
-          <button class='btn button-empty'></button>
-          <button class='btn interval-button'>A2</button>
-          <button class='btn interval-button'>A3</button>
-          <button class='btn interval-button'>A4</button>
-          <button class='btn interval-button'>A5</button>
-          <button class='btn interval-button'>A6</button>
-          <button class='btn interval-button'>A7</button>
-          <button class='btn interval-button'>A8</button><br>
+          <button class='btn btn-sm button-empty'></button>
+          <button class='btn btn-sm interval-button'>A2</button>
+          <button class='btn btn-sm interval-button'>A3</button>
+          <button class='btn btn-sm interval-button'>A4</button>
+          <button class='btn btn-sm interval-button'>A5</button>
+          <button class='btn btn-sm interval-button'>A6</button>
+          <button class='btn btn-sm interval-button'>A7</button>
+          <button class='btn btn-sm interval-button'>A8</button><br>
         </div>
 
       </div> <!-- interval menu -->

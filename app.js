@@ -41,7 +41,7 @@ $(document).ready(function () {
     }, 600);
   };
 
-  var parseInterval = function(interval) {
+  var parseIntervalString = function(interval) {
     return interval.split("").reduce(function(accumulator, val){
       if (val !== '-') {
         accumulator += val;
@@ -51,15 +51,16 @@ $(document).ready(function () {
   };
 
   var checkResponse = function(intName) {
-    if (intName === parseInterval(currentInterval[0].toString())) {
-      return true;
-    } else {
-      return false;
-    }
+    return intName === parseIntervalString(currentInterval[0].toString()) ? true : false;
   };
 
-  // APP
-  var currentInterval = generateInterval();
+  var setNewInterval = function() {
+    currentInterval = generateInterval();
+    var intervalString = parseIntervalString(currentInterval[0].toString());
+    if (intervalString.length > 2) {
+      setNewInterval();
+    }
+  }
 
   // click handlers 
   $('.interval-menu').on('click', '.interval-button', function(e) {
@@ -67,7 +68,7 @@ $(document).ready(function () {
     console.log("Check response: ", checkResponse($(this).text()));
     if (checkResponse($(this).text())) {
       $(this).addClass('correct');
-      currentInterval = generateInterval();
+      setNewInterval();
       $('.new-interval').text('Play next');
     } else {
       $(this).addClass('incorrect');
@@ -79,7 +80,7 @@ $(document).ready(function () {
     $(this).text('New interval');
     $('.interval-button').removeClass('correct incorrect');
     $('.play-again').text('Play again');
-    currentInterval = generateInterval();
+    setNewInterval();
     playInterval(currentInterval);
     console.log("Current interval: ", currentInterval[0].toString());
   });

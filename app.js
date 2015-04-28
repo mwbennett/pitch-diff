@@ -5,8 +5,8 @@ $(document).ready(function () {
   // HELPERS                       //
   //===============================//
   var generateRandomNote = function() {
-    var key = Math.floor(Math.random() * 64);
-    return teoria.note.fromKey(key + 12);
+    var key = Math.floor(Math.random() * 58);
+    return teoria.note.fromKey(key + 15);
   };
 
   var generateInterval = function() {
@@ -17,11 +17,12 @@ $(document).ready(function () {
     // make sure the interval is no greater than an octave apart 
     if ( Math.abs(note1.key() - note2.key()) > 12 ) {
       var randomSign = Math.random() >= .5 ? 1 : -1;
-      var newKey = (note2.key() % 12 + note1.key()) * randomSign;
+
+      var newKey = (note2.key() % 12 * randomSign) + note1.key();
 
       // ensure note stays within limits 
-      if (newKey > 82 || newKey < 7){
-        newKey = (note2.key() % 12 + note1.key()) * -randomSign;
+      if (newKey > 73 || newKey < 15){
+        newKey = (note2.key() % 12 * -randomSign) + note1.key();
       }
 
       note2 = teoria.note.fromKey(newKey);
@@ -83,6 +84,9 @@ $(document).ready(function () {
     stave.addClef(noteClef).setContext(ctx).draw();
 
     // Create the notes
+    var accidentals = [];
+
+    // TODO - handle accidentals! 
     var notes = [
       new Vex.Flow.StaveNote({ clef: noteClef, keys: noteKeys, duration: "w" })
         // addAccidental(1, new Vex.Flow.Accidental("b")).

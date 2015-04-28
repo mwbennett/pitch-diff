@@ -1,5 +1,5 @@
 {
-  "name": "2015-03-solo",
+  "name": "pitchDiff",
   "version": "1.0.0",
   "description": "## Interval Training for Musicians and Composers ##",
   "main": "app.js",
@@ -8,15 +8,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mwbennett/2015-03-solo.git"
+    "url": "https://github.com/mwbennett/pitchDiff.git"
   },
   "author": "Mark Bennett",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mwbennett/2015-03-solo/issues"
+    "url": "https://github.com/mwbennett/pitchDiff/issues"
   },
-  "homepage": "https://github.com/mwbennett/2015-03-solo",
+  "homepage": "https://github.com/mwbennett/pitchDiff",
   "dependencies": {
     "express": "^4.12.3"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }

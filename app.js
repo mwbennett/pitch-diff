@@ -24,8 +24,7 @@ $(document).ready(function () {
 
       note2 = teoria.note.fromKey(newKey);
     }
-
-    return [note1, note2];
+    return [teoria.interval(note1, note2), note1, note2];
   };
 
   var playFreq = function(freq) {
@@ -35,31 +34,59 @@ $(document).ready(function () {
     }).bang().play();
   };
   
-  var playInterval = function(intervalArr) {
-    playFreq(intervalArr[0].fq());
+  var playInterval = function(interval) {
+    playFreq(interval[1].fq());
     setTimeout(function() {
-      playFreq(intervalArr[1].fq());
+      playFreq(interval[2].fq());
     }, 600);
   };
 
-  // APP
+  var parseInterval = function(interval) {
+    return interval.split("").reduce(function(accumulator, val){
+      if (val !== '-') {
+        accumulator += val;
+      }
+      return accumulator;
+    }, "");
+  };
 
-  var currentInterval = null;
+  var checkResponse = function(intName) {
+    if (intName === parseInterval(currentInterval[0].toString())) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  // APP
+  var currentInterval = generateInterval();
 
   // click handlers 
   $('.interval-menu').on('click', '.interval-button', function(e) {
     e.preventDefault();
-    console.log($(this).text());
+    console.log("Check response: ", checkResponse($(this).text()));
+    if (checkResponse($(this).text())) {
+      $(this).addClass('correct');
+      currentInterval = generateInterval();
+      $('.new-interval').text('Play next');
+    } else {
+      $(this).addClass('incorrect');
+    }
   });
 
   $('.playing-options').on('click', '.new-interval', function(e) {
     e.preventDefault();
-    currentInterval = generateInterval;
+    $(this).text('New interval');
+    $('.interval-button').removeClass('correct incorrect');
+    $('.play-again').text('Play again');
+    currentInterval = generateInterval();
     playInterval(currentInterval);
+    console.log("Current interval: ", currentInterval[0].toString());
   });
 
   $('.playing-options').on('click', '.play-again', function(e) {
     e.preventDefault();
+    $(this).text('Play again');
     playInterval(currentInterval);
   });
 

@@ -53,12 +53,18 @@ table {
 /*APP STYLES */
 body {
   padding: 25px;
-  font-family: Gill Sans Extrabold, sans-serif;
+  font-family: 'caviar_dreamsregular', Arial, sans-serif;
   font-size: 14px;
+  color: silver;
+  background: url(../images/piano-hands.jpeg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-size: 16px;
 }
 
 h1, h2 {
-  color: #FF8533;
   margin-bottom: 5px;
   font-size: 18px;
 }
@@ -76,9 +82,13 @@ button:focus {
   position: relative;
   top: -20px;
 }
+
+.logo {
+  max-width: 250px;
+}
+
 /*CANVAS*/
 .canvas-container {
-  text-align: center;
   clear: both;
 }
 
@@ -89,13 +99,15 @@ canvas {
   margin-right: auto;
   display: block;
   width: 500px;
+  background: rgba(255,255,255, 0.3);
+  border-radius: 5px;
 }
 
 /*SCOREBOARD*/
 .scoreboard {
   width: 200px;
   float: right;
-  margin-right: 20px;
+  margin: 10px 50px 0 0;
   z-index: 1;
   position: relative;
 }
@@ -112,9 +124,27 @@ canvas {
   text-align: center;
 }
 /*INTERVAL BUTTONS*/
+.btn-sm {
+  background: none;
+  border: 1px solid lightgrey;
+}
+
+.btn-sm.btn-danger {
+  border-color: #bd362f;
+}
+
+.btn-sm.btn-success {
+  border-color: #51a351; 
+}
+
 .btn {
+  color: white;
   width: 50px;
   margin: 5px 0;
+}
+
+.btn-sm:hover {
+  color: silver;
 }
 
 .button-empty {
@@ -131,9 +161,14 @@ canvas {
   margin: 15px;
 }
 
+.btn-player, .clear-score {
+  background: none;
+  border-color: silver;
+}
+
 .btn-info {
-  background: #FF8533;
-  border-color: #FF8533;
+  background: gray;
+  border-color: gray;
 }
 
 .playing-options {

@@ -106,7 +106,7 @@ $(document).ready(function () {
     var canvas = $("canvas")[0];
     var renderer = new Vex.Flow.Renderer(canvas, Vex.Flow.Renderer.Backends.CANVAS);
     var ctx = renderer.getContext();
-    var stave = new Vex.Flow.Stave(120, 10, 200);
+    var stave = new Vex.Flow.Stave(100, 10, 200);
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -158,7 +158,6 @@ $(document).ready(function () {
 
   $('.interval-menu').on('click', '.interval-button', function(e) {
     e.preventDefault();
-    console.log("Check response: ", checkResponse($(this).text()));
 
     if (checkResponse($(this).text())) {
       $(this).addClass('btn-success');
@@ -174,7 +173,6 @@ $(document).ready(function () {
       currentStreak = 0;
       $('.current-streak').text(currentStreak);
     }
-
   });
 
   $('.playing-options').on('click', '.new-interval', function(e) {
@@ -185,7 +183,6 @@ $(document).ready(function () {
     $('.play-again').text('Play again');
     setNewInterval();
     playInterval(currentInterval);
-    console.log("Current interval: ", currentInterval[0].toString());
   });
 
   $('.playing-options').on('click', '.play-again', function(e) {
@@ -195,7 +192,6 @@ $(document).ready(function () {
   });
 
   $('.scoreboard').on('click', '.clear-score', function(e) {
-    console.log('HELLOS');
     e.preventDefault();
     correctResponses = totalResponses = longestStreak = currentStreak = 0;
     $('.total-score').text(correctResponses + '/' + totalResponses);

@@ -18,8 +18,5 @@
   "homepage": "https://github.com/mwbennett/pitchDiff",
   "dependencies": {
     "express": "^4.12.3"
-  },
-  "scripts": {
-    "start": "node app.js"
   }
 }

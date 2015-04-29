@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/mwbennett/pitchDiff",
   "dependencies": {
-    "express": "^4.12.3"
+    "express": "^4.12.3",
+    "raphael": "^2.1.4",
+    "teoria": "^1.6.0",
+    "timbre": "^14.11.25"
   }
 }

@@ -56,6 +56,7 @@ body {
   font-family: 'caviar_dreamsregular', Arial, sans-serif;
   font-size: 14px;
   color: silver;
+  background-color: #2b201e;
   background: url(../images/piano-hands.jpeg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -76,6 +77,11 @@ h1 {
 
 button:focus {
   outline: 0 !important;
+  color: silver;
+}
+
+button:active {
+  color: silver;
 }
 
 .main-content {

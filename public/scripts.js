@@ -165,7 +165,6 @@ $(document).ready(function () {
       $('.current-streak').text(++currentStreak);
       checkLongestStreak();
       $('.longest-streak').text(longestStreak);
-      $('.new-interval').addClass('btn-info');
       $('.new-interval').text('Play next');
     } else {
       $(this).addClass('btn-danger');

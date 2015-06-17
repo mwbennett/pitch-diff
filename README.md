@@ -7,7 +7,7 @@ This is a project I completed as a student at [hackreactor](http://hackreactor.c
 
 ## Summary ##
 <!-- > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good. -->
-  > PitchDiff helps you improve your ability to quickly and accurately recognize intervals. The app allows you to hear an interval played aloud and see the interval written in staff notation. 
+  > PitchDiff helps you improve your ability to quickly and accurately recognize intervals. The app offers a gamified interface to practice identifying intervals that are played aloud and rendered on a music staff. 
 
   > Interval recognition is a key component of musical training, and is challenging to learn without routine practice. The ability to quickly identify intervals offers a distinct advantage for aspiring musicians, composers, and theorists. Interval training is often a pain point for young music students, and the feeling that you cannot practice without an instructor nearby makes development even more difficult. 
 
